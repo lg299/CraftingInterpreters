@@ -1,5 +1,0 @@
-package CraftingInterpreters
-
-func main() {
-
-}
