@@ -5,6 +5,21 @@ import (
 	"os"
 )
 
+// Scanner scanner struct
+type Scanner struct {
+	source  string
+	line    int
+	start   int
+	current int
+	tokens  []string
+}
+
+// check whether we are at the end of a source line
+func (s Scanner) isAtEnd() bool {
+	return s.current >= len(s.source)
+}
+
+// OpenFile open file function
 func OpenFile(path string) error {
 	file, openError := os.Open(path)
 	if openError != nil {
