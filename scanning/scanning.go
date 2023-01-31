@@ -1,9 +1,6 @@
 package scanning
 
-import (
-	"log"
-	"os"
-)
+import "fmt"
 
 // Scanner scanner struct
 type Scanner struct {
@@ -11,27 +8,18 @@ type Scanner struct {
 	line    int
 	start   int
 	current int
-	tokens  []string
+	tokens  []Token
 }
 
-// check whether we are at the end of a source line
-func (s Scanner) isAtEnd() bool {
-	return s.current >= len(s.source)
+// Token token struct
+type Token struct {
+	lexeme    string
+	line      int
+	tokenType string
 }
 
-// OpenFile open file function
-func OpenFile(path string) error {
-	file, openError := os.Open(path)
-	if openError != nil {
-		log.Println("Error opening file")
-		return openError
-	}
-
-	closeError := file.Close()
-	if closeError != nil {
-		log.Println("Error closing file")
-		return closeError
-	}
-
-	return nil
+func Scan() {
+	file, _ := OpenFile("../scanning/example_input.txt")
+	scanner := scanLine(file)
+	fmt.Printf("scanner: %v\n", scanner)
 }
