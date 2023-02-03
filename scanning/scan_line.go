@@ -6,15 +6,15 @@ import (
 )
 
 func scanLine(file *os.File) Scanner {
-	s := Scanner{current: 0, start: 0, line: 1, tokens: []Token{}, source: ""}
+	s := Scanner{current: 0, start: 0, line: 0, tokens: []Token{}, source: ""}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
+		s.line = s.line + 1
 		line := scanner.Text()
-
+		println("Line: ", line)
 		s.source = line
 		s.ScanTokens()
-
-		s.line = s.line + 1
 	}
+	s.tokens = append(s.tokens, Token{tokenType: "EOF", line: s.line + 1})
 	return s
 }

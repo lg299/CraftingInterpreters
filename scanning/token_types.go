@@ -1,69 +1,71 @@
 package scanning
 
-type TokenTypesStruct struct {
+type TokenType string
+
+const (
 	// Single-character tokens.
-	LeftParen  string
-	RightParen string
-	LeftBrace  string
-	RightBrace string
-	COMMA      string
-	DOT        string
-	MINUS      string
-	PLUS       string
-	SEMICOLON  string
-	SLASH      string
-	STAR       string
+	LeftParen  TokenType = "LEFT_PAREN"
+	RightParen           = "RIGHT_PAREN"
+	LeftBrace            = "LEFT_BRACE"
+	RightBrace           = "RIGHT_BRACE"
+	COMMA                = "COMMA"
+	DOT                  = "DOT"
+	MINUS                = "MINUS"
+	PLUS                 = "PLUS"
+	SEMICOLON            = "SEMICOLON"
+	SLASH                = "SLASH"
+	STAR                 = "STAR"
 
 	// One or two character tokens.
-	BANG         string
-	BangEqual    string
-	EQUAL        string
-	EqualEqual   string
-	GREATER      string
-	GreaterEqual string
-	LESS         string
-	LessEqual    string
+	BANG         = "BANG"
+	BangEqual    = "BANG_EQUAL"
+	EQUAL        = "EQUAL"
+	EqualEqual   = "EQUAL_EQUAL"
+	GREATER      = "GREATER"
+	GreaterEqual = "GREATER_EQUAL"
+	LESS         = "LESS"
+	LessEqual    = "LESS_EQUAL"
 
 	// Literals.
-	IDENTIFIER string
-	STRING     string
-	NUMBER     string
+	IDENTIFIER = "IDENTIFIER"
+	STRING     = "STRING"
+	NUMBER     = "NUMBER"
 
 	// Keywords.
-	AND    string
-	CLASS  string
-	ELSE   string
-	FALSE  string
-	FUN    string
-	FOR    string
-	IF     string
-	NIL    string
-	OR     string
-	PRINT  string
-	RETURN string
-	SUPER  string
-	THIS   string
-	TRUE   string
-	VAR    string
-	WHILE  string
+	AND    = "AND"
+	CLASS  = "CLASS"
+	ELSE   = "ELSE"
+	FALSE  = "FALSE"
+	FUN    = "FUN"
+	FOR    = "FOR"
+	IF     = "IF"
+	NIL    = "NIL"
+	OR     = "OR"
+	PRINT  = "PRINT"
+	RETURN = "RETURN"
+	SUPER  = "SUPER"
+	THIS   = "THIS"
+	TRUE   = "TRUE"
+	VAR    = "VAR"
+	WHILE  = "WHILE"
 
-	EOF string
-}
+	EOF = "EOF"
+)
 
-func TokenTypes() map[string]string {
-	tokenTypes := make(map[string]string)
-	tokenTypes["("] = "LEFT_PAREN"
-	tokenTypes[")"] = "RIGHT_PAREN"
-	tokenTypes["["] = "LEFT_BRACE"
-	tokenTypes["]"] = "RIGHT_BRACE"
-	tokenTypes[","] = "COMMA"
-	tokenTypes["."] = "DOT"
-	tokenTypes["="] = "EQUAL"
-	tokenTypes["-"] = "MINUS"
-	tokenTypes["+"] = "PLUS"
-	tokenTypes[";"] = "SEMICOLON"
-	tokenTypes["/"] = "SLASH"
-	tokenTypes["*"] = "STAR"
-	tokenTypes["while"] = "WHILE"
+func TokenTypes() map[string]TokenType {
+	tokenTypes := make(map[string]TokenType)
+	tokenTypes["("] = LeftParen
+	tokenTypes[")"] = RightParen
+	tokenTypes["["] = LeftBrace
+	tokenTypes["]"] = RightBrace
+	tokenTypes[","] = COMMA
+	tokenTypes["."] = DOT
+	tokenTypes["="] = EQUAL
+	tokenTypes["-"] = MINUS
+	tokenTypes["+"] = PLUS
+	tokenTypes[";"] = SEMICOLON
+	tokenTypes["/"] = SLASH
+	tokenTypes["*"] = STAR
+	tokenTypes["while"] = WHILE
 	return tokenTypes
 }

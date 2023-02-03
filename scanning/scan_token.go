@@ -33,7 +33,7 @@ func (s *Scanner) ScanToken() {
 }
 
 // AddTokens need to add the token to s.tokens
-func (s *Scanner) AddTokens(token string) {
+func (s *Scanner) AddTokens(token TokenType) {
 	newToken := Token{
 		tokenType: token,
 		lexeme:    s.source[s.start : s.current+1],
