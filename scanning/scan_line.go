@@ -5,8 +5,14 @@ import (
 	"os"
 )
 
-func scanLine(file *os.File) Scanner {
-	s := Scanner{current: 0, start: 0, line: 0, tokens: []Token{}, source: ""}
+func scanLines(file *os.File) Scanner {
+	s := Scanner{
+		current: 0,
+		start:   0,
+		line:    0,
+		tokens:  []Token{},
+		source:  "",
+	}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		s.line = s.line + 1

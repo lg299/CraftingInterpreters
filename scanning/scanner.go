@@ -9,11 +9,15 @@ type Scanner struct {
 	tokens  []Token
 }
 
-func Scan(path string) ([]Token, error) {
-	file, err := OpenFile(path)
-	if err != nil {
-		return nil, err
+func Scan(path string) ([]Token, error, error) {
+	file, openError := OpenFile(path)
+	if openError != nil {
+		return nil, openError, nil
 	}
-	scanner := scanLine(file)
-	return scanner.tokens, nil
+	scanner := scanLines(file)
+	closeError := closeFile(file)
+	if closeError != nil {
+		return scanner.tokens, nil, closeError
+	}
+	return scanner.tokens, nil, nil
 }
