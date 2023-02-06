@@ -4,5 +4,5 @@ import "craftinginterpreters/scanning"
 
 func main() {
 	// running scanner
-	scanning.Scan()
+	scanning.Scanner()
 }

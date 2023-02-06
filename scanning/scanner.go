@@ -9,7 +9,7 @@ type Scanner struct {
 	tokens  []Token
 }
 
-func Scan(path string) ([]Token, error, error) {
+func Scanner(path string) ([]Token, error, error) {
 	file, openError := OpenFile(path)
 	if openError != nil {
 		return nil, openError, nil
